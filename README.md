@@ -35,6 +35,23 @@ desktop **1440×900** and mobile **390×844**.
 |---|---|
 | ![](shots/wellness-1440.png) | ![](shots/wellness-390.png) |
 
+### Wellness background — high-resolution fix
+The original `wellness.jpg` was only **1250×373** and looked soft when stretched
+full-bleed. Replaced with a genuinely high-res, license-clean photo
+([Pexels / Mikhail Nilov](https://www.pexels.com/photo/elderly-man-and-woman-doing-leg-stretching-exercise-on-yoga-mat-7500321/),
+Pexels License — free commercial use, no attribution required), downloaded at
+6000×4000 and cropped/stored at **3840×1813** in the repo.
+
+Verified on the live deploy @ **1440 / DPR 2**:
+- **(a) source intrinsic:** `public/images/wellness.jpg` = **3840×1813**
+- **(b) variant downloaded:** `/_next/image?...&w=3840&q=90` → **3840×1813 WebP**
+- **(c) ≥ 2880px @2x:** ✅ 3840 ≥ 2880 (crisp)
+
+**Native-resolution (100%) crop of the new background** — true pixels, no
+downscaling, showing genuine sharpness (hair, fabric, skin detail):
+
+![](shots/wellness-detail.png)
+
 ## Footer (~25% bigger; renamed; aligned bottoms; orange rules flank map)
 | 1440 | 390 |
 |---|---|
