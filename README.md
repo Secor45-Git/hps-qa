@@ -1,66 +1,47 @@
-# Harrington Plastic Surgery & Med Spa — Homepage QA (Matt Moore review)
+# Harrington Plastic Surgery & Med Spa — Homepage QA
 
-Visual proof for the art-director review implemented in
-`Secor45-Git/harrington` @ commit `d32eecf`.
+Visual proof for Matt Moore's morning review, implemented in
+`Secor45-Git/harrington` @ commit `5ee24b7`.
 
 - **Live (production, Vercel `READY`):** https://harrington-s45.vercel.app
-- **Computed body-paragraph font-size @1440:** **19px** (up from 14px under the
-  reverted 12.5% downscale) — confirms body copy increased.
 
-Screenshots are **full-viewport** crops (not full-page) so proportions show:
-desktop **1440×900** and mobile **390×844**.
+Full-**viewport** crops (not full-page) at desktop **1440×900** and mobile
+**390×844** so proportions show.
 
-## Header (utility bar → larger logo → dedicated nav row; no wrap 1280–1440)
-| 1440 | 390 |
-|---|---|
-| ![](shots/header-1440.png) | ![](shots/header-390.png) |
+## 1. Doctor — centered with equal margins
+The whole photo + overlapping white card unit is now centered in the viewport
+(measured **112px left / 112px right @1440**), instead of being left-shifted
+with a large empty gap on the right.
 
-## Doctor (centered with side margins; larger card; 19px body)
 | 1440 | 390 |
 |---|---|
 | ![](shots/doctor-1440.png) | ![](shots/doctor-390.png) |
 
-## Plastic Surgery (considerably larger subtext)
-| 1440 | 390 |
-|---|---|
-| ![](shots/surgery-1440.png) | ![](shots/surgery-390.png) |
+## 2. Wellness — provided banner as a full-width short band
+Reverted to the provided Downloads `wellness.jpg` (**1250×373** senior-couple
+banner). Used as a full screen-width (100vw) background spanning the section
+edge to edge; the aspect box matches the source so the **full image shows with
+no cropping** (couple on the left). The text overlays the bright/blank right
+area on desktop and stacks below the band on mobile. (Source softness accepted.)
 
-## Med Spa (orange-bordered box, angled left edge echoing the image cut, copy moved right)
-| 1440 | 390 |
-|---|---|
-| ![](shots/medspa-1440.png) | ![](shots/medspa-390.png) |
-
-## Wellness (wellness.jpg as full-width background, text overlaid on the right)
 | 1440 | 390 |
 |---|---|
 | ![](shots/wellness-1440.png) | ![](shots/wellness-390.png) |
 
-### Wellness background — high-resolution fix
-The original `wellness.jpg` was only **1250×373** and looked soft when stretched
-full-bleed. Replaced with a genuinely high-res, license-clean photo
-([Pexels / Mikhail Nilov](https://www.pexels.com/photo/elderly-man-and-woman-doing-leg-stretching-exercise-on-yoga-mat-7500321/),
-Pexels License — free commercial use, no attribution required), downloaded at
-6000×4000 and cropped/stored at **3840×1813** in the repo.
+## 3. Social — varied card angles restored (pop-and-hold kept)
+Resting cards sit at alternating ~−6°…+6° tilts again. Each card keeps its tilt
+while it pops to ~1.3× at center, holds ~3s, then pops back.
 
-Verified on the live deploy @ **1440 / DPR 2**:
-- **(a) source intrinsic:** `public/images/wellness.jpg` = **3840×1813**
-- **(b) variant downloaded:** `/_next/image?...&w=3840&q=90` → **3840×1813 WebP**
-- **(c) ≥ 2880px @2x:** ✅ 3840 ≥ 2880 (crisp)
+| Varied resting angles | Center card popped (1.3×) | Mid-transition |
+|---|---|---|
+| ![](shots/social-1-resting-angles.png) | ![](shots/social-2-center-popped.png) | ![](shots/social-3-mid-transition.png) |
 
-**Native-resolution (100%) crop of the new background** — true pixels, no
-downscaling, showing genuine sharpness (hair, fabric, skin detail):
+## 4. Footer — verified against the mockup
+Copyright / map / left-column bottoms align (measured **~458px**), orange 2px
+rules flank the map at full height, hours sit close to the day labels, "All
+rights reserved." is on its own line, and the name reads **"Harrington Plastic
+Surgery & Med Spa"**.
 
-![](shots/wellness-detail.png)
-
-## Footer (~25% bigger; renamed; aligned bottoms; orange rules flank map)
 | 1440 | 390 |
 |---|---|
 | ![](shots/footer-1440.png) | ![](shots/footer-390.png) |
-
-## Social carousel — pop-and-hold (three frames ~1s apart)
-Measured: each card pops to exactly **1.3×** at dead-center and holds ~3s, then
-drops to **1.0×** (none enlarged) between steps.
-
-| Regular (none popped, 1.0×) | Popped-large (1.3×, centered, held) | Mid-transition (1.22×, off-center) |
-|---|---|---|
-| ![](shots/social-2-regular.png) | ![](shots/social-1-popped-large.png) | ![](shots/social-3-mid-transition.png) |
