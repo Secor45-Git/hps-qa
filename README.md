@@ -1,47 +1,48 @@
 # Harrington Plastic Surgery & Med Spa — Homepage QA
 
-Visual proof for Matt Moore's morning review, implemented in
-`Secor45-Git/harrington` @ commit `5ee24b7`.
+Visual proof for Matt Moore's review round, implemented in
+`Secor45-Git/harrington` @ commit `defa0db`.
 
 - **Live (production, Vercel `READY`):** https://harrington-s45.vercel.app
 
-Full-**viewport** crops (not full-page) at desktop **1440×900** and mobile
-**390×844** so proportions show.
+Full-viewport crops: desktop **1440×900**, mobile **390×844**.
 
-## 1. Doctor — centered with equal margins
-The whole photo + overlapping white card unit is now centered in the viewport
-(measured **112px left / 112px right @1440**), instead of being left-shifted
-with a large empty gap on the right.
+## A. Header — nav on the logo row, shorter
+Utility line (location · phone, phone right-most) over a single logo+nav row.
+Header height **222px → 121px @1440**; nav sits on the logo's row (1 row, no wrap).
 
-| 1440 | 390 |
-|---|---|
-| ![](shots/doctor-1440.png) | ![](shots/doctor-390.png) |
+![](shots/header-1440.png)
 
-## 2. Wellness — provided banner as a full-width short band
-Reverted to the provided Downloads `wellness.jpg` (**1250×373** senior-couple
-banner). Used as a full screen-width (100vw) background spanning the section
-edge to edge; the aspect box matches the source so the **full image shows with
-no cropping** (couple on the left). The text overlays the bright/blank right
-area on desktop and stacks below the band on mobile. (Source softness accepted.)
+## B. Doctor — spans the header content width
+Photo left edge **112px == header logo left**; card right edge **1328px == header
+phone right**. Card is **wider than tall (769×541)** with reduced overlap, a
+floating box on the neutral wash.
 
-| 1440 | 390 |
-|---|---|
-| ![](shots/wellness-1440.png) | ![](shots/wellness-390.png) |
+![](shots/doctor-1440.png)
 
-## 3. Social — varied card angles restored (pop-and-hold kept)
-Resting cards sit at alternating ~−6°…+6° tilts again. Each card keeps its tilt
-while it pops to ~1.3× at center, holds ~3s, then pops back.
+## C. Med Spa — orange rules + 3-line copy
+2px full-width orange rules above and below; new body copy sized to **3 lines**
+on desktop.
 
-| Varied resting angles | Center card popped (1.3×) | Mid-transition |
+![](shots/medspa-1440.png)
+
+## D. Social — continuous, nonstop, ~1s centre pop
+The strip never stops; the card crossing centre swells to ~1.3× for ~1s, then
+settles as the next reaches centre. Varied tilts kept. Three frames — featured
+card at left, centre (popped 1.29×), and right:
+
+| Featured left (mid-motion) | Centre — popped 1.29× | Featured right (mid-motion) |
 |---|---|---|
-| ![](shots/social-1-resting-angles.png) | ![](shots/social-2-center-popped.png) | ![](shots/social-3-mid-transition.png) |
+| ![](shots/social-1-left.png) | ![](shots/social-2-center-popped.png) | ![](shots/social-3-right.png) |
 
-## 4. Footer — verified against the mockup
-Copyright / map / left-column bottoms align (measured **~458px**), orange 2px
-rules flank the map at full height, hours sit close to the day labels, "All
-rights reserved." is on its own line, and the name reads **"Harrington Plastic
-Surgery & Med Spa"**.
+## E. Footer — larger logo, map sized to columns & logo
+Larger logo (442px wide). Map **height == side columns (290px)** and **width ==
+logo (442px)**; orange rules **shorter (174 < 290)** and further from the map.
 
-| 1440 | 390 |
-|---|---|
-| ![](shots/footer-1440.png) | ![](shots/footer-390.png) |
+![](shots/footer-1440.png)
+
+## F. Mobile wellness — portrait crop
+Phones use `wellness-mobile.jpg` (554×370, stored in repo); desktop keeps the
+wide banner.
+
+![](shots/wellness-mobile-390.png)
